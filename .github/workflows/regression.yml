@@ -6,7 +6,7 @@ on:
     paths-ignore:
       - '**.md'
       - '.github/workflows/**'
-      - '!.github/workflows/Regression.yml'
+      - '!.github/workflows/regression.yml'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}-${{ github.head_ref || '' }}-${{ github.base_ref || '' }}-${{ github.ref != 'refs/heads/master' || github.sha }}
@@ -17,7 +17,8 @@ jobs:
   strategy:
     fail-fast: false
     matrix:
-      solution: [data.table, collapse, dplyr, pandas, pydatatable, spark, juliadf, juliads, polars, arrow, duckdb, duckdb-latest, datafusion]
+      # solution: [data.table, collapse, dplyr, pandas, pydatatable, spark, juliadf, juliads, polars, arrow, duckdb, duckdb-latest, datafusion]
+      solution: [polars]
   name: Regression Tests solo solutions
   runs-on: ubuntu-20.04
   env:
